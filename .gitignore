@@ -3,4 +3,4 @@ data2/
 env/
 plant_disease_data.zip
 __pycache__/
-models/
+# models/
