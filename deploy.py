@@ -39,8 +39,49 @@ st.sidebar.markdown("""
 
 -- Dataset credit: [Kaggle](https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset)
 
-This dataset consists of about 87K rgb images of healthy and diseased crop leaves which is categorized into 38 different classes. The total dataset is divided into 80/20 ratio of training and validation set preserving the directory structure. A new directory containing 33 test images is created later for prediction purpose.
+This dataset consists of about 87K rgb images of healthy and diseased crop leaves which is categorized into 38 different classes. 
 
+### Supported Plant Diseases
+```
+{'apple black rot',
+ 'apple cedar apple rust',
+ 'apple healthy',
+ 'apple scab',
+ 'blueberry healthy',
+ 'cherry (including sour) healthy',
+ 'cherry (including sour) powdery mildew',
+ 'corn (maize) cercospora leaf spot gray leaf spot',
+ 'corn (maize) common rust',
+ 'corn (maize) healthy',
+ 'corn (maize) northern leaf blight',
+ 'grape black rot',
+ 'grape esca (black measles)',
+ 'grape healthy',
+ 'grape leaf blight (isariopsis leaf spot)',
+ 'orange haunglongbing (citrus greening)',
+ 'peach bacterial spot',
+ 'peach healthy',
+ 'pepper bell bacterial spot',
+ 'pepper bell healthy',
+ 'potato early blight',
+ 'potato healthy',
+ 'potato late blight',
+ 'raspberry healthy',
+ 'soybean healthy',
+ 'squash powdery mildew',
+ 'strawberry healthy',
+ 'strawberry leaf scorch',
+ 'tomato bacterial spot',
+ 'tomato early blight',
+ 'tomato healthy',
+ 'tomato late blight',
+ 'tomato leaf mold',
+ 'tomato mosaic virus',
+ 'tomato septoria leaf spot',
+ 'tomato spider mites two-spotted spider mite',
+ 'tomato target spot',
+ 'tomato yellow leaf curl virus'}          
+```
 ## Approach
 A model built using pytorch was developed and tested on standard laptop CPU. Later the core training was offloaded to a GPU on google colab. 
 
