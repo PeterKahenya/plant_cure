@@ -27,7 +27,31 @@ img_transforms = transforms.Compose([
 
 st.title("PlantCure v0.1.0")
 
-file = st.file_uploader(label="Upload Image")
+st.markdown("""
+Plant Cure is a plant disease detection application that aims to automate the identification and diagnosis of diseases affecting plants.
+""")
+
+st.sidebar.markdown("""
+# Plant Cure v0.1.0
+
+
+## About the dataset
+
+-- Dataset credit: [Kaggle](https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset)
+
+This dataset consists of about 87K rgb images of healthy and diseased crop leaves which is categorized into 38 different classes. The total dataset is divided into 80/20 ratio of training and validation set preserving the directory structure. A new directory containing 33 test images is created later for prediction purpose.
+
+## Approach
+A model built using pytorch was developed and tested on standard laptop CPU. Later the core training was offloaded to a GPU on google colab. 
+
+## Performance
+
+```
+Train loss: 0.051834, Train acc:98.33267% | Test loss: 0.13384, Test acc: 96.01%
+```
+""")
+
+file = st.file_uploader(label="Upload Plant Leaf Image")
 
 if file is not None:
     image = img_transforms(Image.open(file)).to(torch.device('cpu')).unsqueeze(dim=0)
@@ -36,6 +60,10 @@ if file is not None:
         logits = model(image)
         pred_index = torch.softmax(logits,dim=1).argmax(dim=1)
         predicted_category = reversed_categories[pred_index.item()].replace("___"," ").replace("_"," ").replace(",","")
-        st.markdown(f"Predicted Category: **{predicted_category}**")
+        plant = predicted_category.split()[0]
+        disease = " ".join(predicted_category.split()[1:])
+        st.markdown(f"### PLANT: **{plant}**")
+        st.markdown(f"### DISEASE: **{disease}**")
+
     st.image(file)
     
